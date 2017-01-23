@@ -24,7 +24,7 @@ public class JugadorService {
 public void registrarJugadores() {
     Equipo equipo;
 
-    // JUGADORES DEL Celtics
+    //Celtics
     Jugador jugador1 = new Jugador();
     jugador1.setNombre("Anna");
     calendar.set(1995, Calendar.AUGUST, 11);
@@ -33,12 +33,10 @@ public void registrarJugadores() {
     jugador1.setAsistencias(10);
     jugador1.setRebotes(5);
     jugador1.setPosicion("base");
-    //jugador1.setPosition(Posicion.BASE);
     equipo = equipoRepository.findByNombre("Celtics").get(0);
     jugador1.setEquipo(equipo);
     jugadorRepository.save(jugador1);
 
-    // jugador para hacer la prueba de la consulta C (ya que juega en la misma pisción y mismo equipo que el jugador1)
     Jugador jugador26 = new Jugador();
     jugador26.setNombre("Luis");
     calendar.set(1993, Calendar.JANUARY, 18);
@@ -99,7 +97,7 @@ public void registrarJugadores() {
     jugador5.setEquipo(equipo);
     jugadorRepository.save(jugador5);
 
-    // JUGADORES DEL Bulls
+    //Bulls
     Jugador jugador6 = new Jugador();
     jugador6.setNombre("Ingrid");
     calendar.set(1996, Calendar.FEBRUARY, 28);
@@ -160,7 +158,7 @@ public void registrarJugadores() {
     jugador10.setEquipo(equipo);
     jugadorRepository.save(jugador10);
 
-    // JUGADORES DEL Heats
+    //Heats
     Jugador jugador11 = new Jugador();
     jugador11.setNombre("Rocio");
     calendar.set(1992, Calendar.APRIL, 10);
@@ -221,7 +219,7 @@ public void registrarJugadores() {
     jugador15.setEquipo(equipo);
     jugadorRepository.save(jugador15);
 
-    // JUGADORES DEL Toronto
+    //Raptors
     Jugador jugador16 = new Jugador();
     jugador16.setNombre("Alexia");
     calendar.set(1992, Calendar.APRIL, 10);
@@ -282,7 +280,7 @@ public void registrarJugadores() {
     jugador20.setEquipo(equipo);
     jugadorRepository.save(jugador20);
 
-    // JUGADORES DEL New York
+    // Knicks
     Jugador jugador21 = new Jugador();
     jugador21.setNombre("Zan");
     calendar.set(1992, Calendar.APRIL, 10);
@@ -344,36 +342,30 @@ public void registrarJugadores() {
     jugadorRepository.save(jugador25);
 }
 
-// CONSULTAS A LA BASE DE DATOS
-    public void consultas() {
-// PT 1 EJERCICIO 2
+public void consultas() {
+// PT1 E2
         System.out.println("EJERCICIOS JUGADOR:");
-        // A. buscar jugador/es por nombre, sin necesidad de introducirlo entero
+        // A.
         System.out.println("A - Buscar jugador/es por nombre, sin necesidad de introducirlo entero");
         System.out.println(jugadorRepository.findByNombreStartingWith("Cri"));
-        // B. buscar jugadores que hayan conseguido un numero mayor o igual de canastas al
-        // especificado como parametro
+        // B.
         System.out.println("B - Buscar jugadores que hayan conseguido un numero mayor o igual de canastas al especificado como parametro");
         System.out.println(jugadorRepository.findByCanastasGreaterThanEqual(15));
-        // C. buscar jugadores que hayn efectuado un numero de asistencias dentro de un rango
-        // especificado como parametro
+        // C.
         System.out.println("C - Buscar jugadores que hayn efectuado un numero de asistencias dentro de un rango especificado como parametro");
         System.out.println(jugadorRepository.findByAsistenciasBetween(2, 15));
-        // D. buscar jugador/es que pertenezca a una posición concreta
+        // D.
         System.out.println("D - Buscar jugador/es que pertenezca a una posición concreta");
         System.out.println(jugadorRepository.findByPosicionLike("base"));
-        // E. buscar jugador/es que hayan nacido a una fecha anterior a una fecha especificada
-        // como parametro
+        // E.
         System.out.println("E - Buscar jugador/es que hayan nacido a una fecha anterior a una fecha especificada como parametro");
         calendar.set(1993, Calendar.APRIL, 18);
         System.out.println(jugadorRepository.findByNacimientoAfter(calendar.getTime()));
-        // F. Agrupar los jugadores por la posición del campo y devolver para cada grupo la siguiente
-        // información: la media de canastas, asistencias y rebotes.
+        // F.
         System.out.println("F - Agrupar los jugadores por la posición del campo.");
         jugadorRepository.getStatisticsGroupByPosition().
                 forEach(var -> System.out.println("Posicion: " + var[0] + ", Media Canastas: " + var[1] + ", Media Asistencias: " + var[2] + ", Media Rebotes: " + var[3]));
-        // G. Lo mismo que el punto anterior pero devolviendo la media, el máximo y el mínimo de
-        // canastas, asistencias y rebotes.
+        // G.
         System.out.println("G - Lo mismo que el punto anterior pero devolviendo la media, el máximo y el mínimo de canastas, asistencias y rebotes.");
         System.out.println("              CANASTAS       ASISTENCIAS          REBOTES");
         jugadorRepository.getStatisticsGroupByPositionDevolverMedias().
