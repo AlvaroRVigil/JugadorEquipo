@@ -1,5 +1,5 @@
 package com.alvaro.Entity;
 
-public enum Posicion {
+public enum Position {
     PIVOT, ALERO, BASE, ESCOLTA, ALA_PIVOT
 }

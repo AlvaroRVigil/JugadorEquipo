@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Equipo {
+public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,10 +25,10 @@ public class Equipo {
 
     @JsonIgnore
     @OneToMany(mappedBy = "equipo")
-    private Set<Jugador> jugador = new HashSet<>();
+    private Set<Player> player = new HashSet<>();
 
 
-    public Equipo() {}
+    public Team() {}
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
@@ -45,7 +45,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" +
+        return "Team{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", localidad=" + localidad +

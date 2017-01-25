@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 import java.util.Date;
 
 @Entity
-public class Jugador {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,8 +34,8 @@ public class Jugador {
     public String posicion;
 
  @ManyToOne
-    private Equipo equipo;
-    public Jugador() {}
+    private Team team;
+    public Player() {}
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
@@ -58,17 +58,17 @@ public class Jugador {
     public String getPosicion() { return posicion; }
     public void setPosicion(String posicion) { this.posicion = posicion; }
 
-    public Equipo getEquipo() {return equipo;}
-    public void setEquipo(Equipo equipo) {this.equipo = equipo;}
+    public Team getTeam() {return team;}
+    public void setTeam(Team team) {this.team = team;}
 
     @Override
     public String toString() {
 
         String nombreEquipo = "";
 
-        if (equipo != null) {nombreEquipo = equipo.getNombre();}
+        if (team != null) {nombreEquipo = team.getNombre();}
 
-        return "Jugador{" +
+        return "Player{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", nacimiento=" + nacimiento +
@@ -76,7 +76,7 @@ public class Jugador {
                 ", asistencias=" + asistencias +
                 ", rebotes=" + rebotes +
                 ", posicion='" + posicion + '\'' +
-                ", nombre equipo='" + nombreEquipo + '\'' +
+                ", nombre team='" + nombreEquipo + '\'' +
                 '}';
     }
 

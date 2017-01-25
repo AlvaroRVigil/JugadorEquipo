@@ -1,7 +1,6 @@
 package com.alvaro.Repository;
 
-import com.alvaro.Entity.Jugador;
-import com.alvaro.Entity.Posicion;
+import com.alvaro.Entity.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,23 +9,23 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface JugadorRepository extends JpaRepository<Jugador, Long> {
-// PT 1 JUGADOR 2
+public interface PlayerRepository extends JpaRepository<Player, Long> {
+// PT 1 J2
 
     // A
-    public List<Jugador> findByNombreStartingWith(String nombreJugador);
+    public List<Player> findByNombreStartingWith(String nombreJugador);
 
     // B
-    public List<Jugador> findByCanastasGreaterThanEqual(int numCanastas);
+    public List<Player> findByCanastasGreaterThanEqual(int numCanastas);
 
     // C
-    public List<Jugador> findByAsistenciasBetween(int minAsistencias, int maxAsistencias);
+    public List<Player> findByAsistenciasBetween(int minAsistencias, int maxAsistencias);
 
     // D
-    public List<Jugador> findByPosicionLike(String posicion);
+    public List<Player> findByPosicionLike(String posicion);
 
     // E
-    public List<Jugador> findByNacimientoAfter(Date nacimiento);
+    public List<Player> findByNacimientoAfter(Date nacimiento);
 
     // F
     @Query("SELECT jugador.posicion, AVG(jugador.canastas), AVG(jugador.asistencias), AVG(jugador.rebotes) " +
@@ -42,15 +41,14 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
             "GROUP BY jugador.posicion")
     List<Object[]> getStatisticsGroupByPositionDevolverMedias();
 
-// PT 1 EQUIPO 2
+// PT 1 E2
 
     // B
-    public List<Jugador> findByEquipoNombre(String nombreEquipo);
+    public List<Player> findByEquipoNombre(String nombreEquipo);
 
     // C
-    public List<Jugador> findByEquipoNombreAndPosicion(String nombreEquipo, String posicion);
+    public List<Player> findByEquipoNombreAndPosicion(String nombreEquipo, String posicion);
 
     // D
-    Jugador findFirstByOrderByCanastasDesc();
-
+    Player findFirstByOrderByCanastasDesc();
 }
