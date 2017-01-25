@@ -345,27 +345,20 @@ public void consultas() {
 // PT1 E2
         System.out.println("EJERCICIOS JUGADOR:");
         // A.
-        System.out.println("A - Buscar jugador/es por nombre, sin necesidad de introducirlo entero");
         System.out.println(playerRepository.findByNombreStartingWith("Cri"));
         // B.
-        System.out.println("B - Buscar jugadores que hayan conseguido un numero mayor o igual de canastas al especificado como parametro");
         System.out.println(playerRepository.findByCanastasGreaterThanEqual(15));
         // C.
-        System.out.println("C - Buscar jugadores que hayn efectuado un numero de asistencias dentro de un rango especificado como parametro");
         System.out.println(playerRepository.findByAsistenciasBetween(2, 15));
         // D.
-        System.out.println("D - Buscar jugador/es que pertenezca a una posición concreta");
         System.out.println(playerRepository.findByPosicionLike("base"));
         // E.
-        System.out.println("E - Buscar jugador/es que hayan nacido a una fecha anterior a una fecha especificada como parametro");
         calendar.set(1993, Calendar.APRIL, 18);
         System.out.println(playerRepository.findByNacimientoAfter(calendar.getTime()));
         // F.
-        System.out.println("F - Agrupar los jugadores por la posición del campo.");
         playerRepository.getStatisticsGroupByPosition().
                 forEach(var -> System.out.println("Position: " + var[0] + ", Media Canastas: " + var[1] + ", Media Asistencias: " + var[2] + ", Media Rebotes: " + var[3]));
         // G.
-        System.out.println("G - Lo mismo que el punto anterior pero devolviendo la media, el máximo y el mínimo de canastas, asistencias y rebotes.");
         System.out.println("              CANASTAS       ASISTENCIAS          REBOTES");
         playerRepository.getStatisticsGroupByPositionDevolverMedias().
                 forEach(var -> System.out.println(var[0] +

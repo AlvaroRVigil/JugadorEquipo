@@ -59,13 +59,17 @@ public class TeamService {
 
     public void consultas() {
         System.out.println("EJERCICIOS EQUIPO:");
-        // A. Consultar los equipos existentes en una localidad determinada
-        System.out.println("A - Equipos de una localidad introducida (localidad introducida --> Boston): " + teamRepository.findByLocalidad("Boston"));
-        // B. Devuelve todos los jugadores de un equipo, a partir del nombre completo del equipo
-        System.out.println("B - Jugadores de un equipo introducido (equipo introducido --> Celtics): " + playerRepository.findByEquipoNombre("Celtics"));
-        // C. Devuelve todos los jugadores de un equipo, que además jueguen en la misma posición, por ejemplo, alero.
-        System.out.println("C - Jugadores de un equipo introducido que además juegan en la misma posición (equipo introducido --> Celtics || posición introducida --> base): " + playerRepository.findByEquipoNombreAndPosicion("Celtics", "base"));
-        // D. Devuelve el jugador que mas canastas ha conseguido del total de jugadores
-        System.out.println("D - Player que mas canastas a conseguido: " + playerRepository.findFirstByOrderByCanastasDesc());
+        // A
+
+        System.out.println("localidad = Boston: " + teamRepository.findByLocalidad("Boston"));
+        // B
+
+        System.out.println("equipo = Celtics: " + playerRepository.findByEquipoNombre("Celtics"));
+        // C
+
+        System.out.println("equipo = Celtics || posición = base: " + playerRepository.findByEquipoNombreAndPosicion("Celtics", "base"));
+        // D
+
+        System.out.println("Jugador que mas canastas a conseguido:" + playerRepository.findFirstByOrderByCanastasDesc());
     }
 }
